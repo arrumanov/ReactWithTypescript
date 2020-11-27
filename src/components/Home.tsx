@@ -1,9 +1,12 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
+ import { Button } from 'antd'
+
 
 const Home = () => (
   <div>
     <h1>Hello, world!</h1>
+    <Button type="primary">Button</Button>
     <p>Welcome to your new single-page application, built with:</p>
     <ul>
       <li>

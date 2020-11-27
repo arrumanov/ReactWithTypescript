@@ -6,6 +6,7 @@ import Counter from './components/Counter'
 import FetchData from './components/FetchData'
 
 import './index.scss'
+import './App.css'
 
 const App = () => (
   <Layout>
