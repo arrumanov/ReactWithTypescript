@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
+    "@babel/plugin-proposal-decorators": "^7.12.1",
     "@babel/runtime": "^7.12.5",
     "@types/classnames": "^2.2.11",
     "@types/d3-shape": "^2.0.0",
@@ -17,6 +18,9 @@
     "history": "4.10.1",
     "jquery": "^3.5.1",
     "merge": "1.2.1",
+    "mobx": "^6.0.4",
+    "mobx-react": "^7.0.5",
+    "mobx-react-devtools": "^6.1.1",
     "moment": "^2.29.1",
     "node-sass": "^4.14.1",
     "popper.js": "^1.16.0",
