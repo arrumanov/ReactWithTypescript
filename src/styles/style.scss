@@ -1,3 +1,5 @@
-@import './base/normalize';
-@import './base/custom';
-@import './base/buttons';
+@import './util/normalize';
+@import './util/variables';
+@import './util/colors';
+@import './util/global';
+@import './components/button';

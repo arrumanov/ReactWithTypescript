@@ -5,9 +5,6 @@ import Home from './components/Home'
 import Counter from './components/Counter'
 import FetchData from './components/FetchData'
 
-import './index.scss'
-import './App.css'
-
 const App = () => (
   <Layout>
     <Route exact path="/" component={Home} />
