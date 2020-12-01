@@ -1,23 +1,18 @@
-// eslint-disable-next-line import/no-cycle
-import * as WeatherForecasts from './WeatherForecasts'
-import * as Counter from './Counter'
+import { observable, action } from 'mobx'
 
-// The top-level state object
-export interface ApplicationState {
-  counter: Counter.CounterState | undefined
-  weatherForecasts: WeatherForecasts.WeatherForecastsState | undefined
-}
+export class ApplicationState {
+  @observable counter: number = 1
 
-// Whenever an action is dispatched, Redux will update each top-level application state property using
-// the reducer with the matching name. It's important that the names match exactly, and that the reducer
-// acts on the corresponding ApplicationState property type.
-export const reducers = {
-  counter: Counter.reducer,
-  weatherForecasts: WeatherForecasts.reducer,
-}
+  @action
+  increment = () => {
+    console.log(345)
+    console.log(this.counter)
+    this.counter += 1
+    console.log(this.counter)
+  }
 
-// This type can be used as a hint on action creators so that its 'dispatch' and 'getState' params are
-// correctly typed to match your store.
-export interface AppThunkAction<TAction> {
-  (dispatch: (action: TAction) => void, getState: () => ApplicationState): void
+  @action
+  decrement = () => {
+    this.counter -= 1
+  }
 }

@@ -1,41 +1,57 @@
+/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable max-classes-per-file */
 import * as React from 'react'
-import { connect } from 'react-redux'
-import { RouteComponentProps } from 'react-router'
-import { ApplicationState } from '../store'
-import * as CounterStore from '../store/Counter'
+import { makeObservable, observable, action } from 'mobx'
+import { observer } from 'mobx-react'
+// import { ApplicationState } from '../store'
 
-type CounterProps = CounterStore.CounterState &
-  typeof CounterStore.actionCreators &
-  RouteComponentProps<{}>
+export class ApplicationState {
+  public counter: number
 
-class Counter extends React.PureComponent<CounterProps> {
-  public render() {
-    return (
-      // eslint-disable-next-line react/jsx-fragments
-      <React.Fragment>
-        <h1>Counter</h1>
+  constructor(value: number) {
+    makeObservable(this, {
+      counter: observable,
+      increment: action,
+    })
+    this.counter = value
+  }
 
-        <p>This is a simple example of a React component.</p>
+  increment = () => {
+    this.counter += 1
+  }
 
-        <p aria-live="polite">
-          Current count: <strong>{this.props.count}</strong>
-        </p>
-
-        <button
-          type="button"
-          className="btn btn-primary btn-lg"
-          onClick={() => {
-            this.props.increment()
-          }}
-        >
-          Increment
-        </button>
-      </React.Fragment>
-    )
+  decrement = () => {
+    this.counter -= 1
   }
 }
 
-export default connect(
-  (state: ApplicationState) => state.counter,
-  CounterStore.actionCreators,
-)(Counter)
+const store = new ApplicationState(1)
+
+export const Counter = observer(
+  class Counter extends React.Component<ApplicationState> {
+    render() {
+      return (
+        // eslint-disable-next-line react/jsx-fragments
+        <React.Fragment>
+          <h1>Counter</h1>
+
+          <p>This is a simple example of a React component.</p>
+
+          <p aria-live="polite">
+            Current count: <strong>{store.counter}</strong>
+          </p>
+
+          <button
+            type="button"
+            className="btn btn-primary btn-lg"
+            onClick={() => {
+              store.increment()
+            }}
+          >
+            Increment
+          </button>
+        </React.Fragment>
+      )
+    }
+  },
+)

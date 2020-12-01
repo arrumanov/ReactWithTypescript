@@ -12,13 +12,3 @@ export const Layout: React.FC = observer((props: { children?: React.ReactNode })
     </React.Fragment>
   )
 })
-
-// const Layout = (props: { children?: React.ReactNode }) => (
-//   // eslint-disable-next-line react/jsx-fragments
-//   <React.Fragment>
-//     <NavMenu />
-//     <Container>{props.children}</Container>
-//   </React.Fragment>
-// )
-
-// export default Layout
